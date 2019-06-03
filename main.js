@@ -1,7 +1,7 @@
 //初始化 
-var first = init();
-var keys = first.keys;
-var hash = first.hash;
+var obj = init();
+var keys = obj.keys;
+var hash = obj.hash;
 
 
 //生成键盘
@@ -10,7 +10,6 @@ setkeys(keys, hash);
 
 //监听键盘按压事件
 listenKeydown(hash)
-
 
 
 
@@ -44,10 +43,9 @@ function getImg(domain, kbd1) {
     img1.onerror = function (img) {
         img.target.src = './img/hua.png'; //如果img没有获取到ico则将地址指向 hua.png
     }
-    return img1;
 }
 
-function getButton(id, kbd1,img1) {
+function getButton(id, kbd1) {
     let button1 = getTag('button');
     kbd1.appendChild(button1);
     button1.textContent = 'edit';
@@ -113,17 +111,17 @@ function setkeys(keys, hash) {
             getSpan(row[index2], kbd1)
 
             //生成img标签，判断img是否能被加载出来
-           let img1 = getImg(hash[row[index2]], kbd1)
+            getImg(hash[row[index2]], kbd1)
 
             //生成编辑按钮
-            getButton(row[index2], kbd1, img1)
+            getButton(row[index2], kbd1)
         }
     }
     return
 }
 
 function listenKeydown(hash) {
-    onkeypress = function (e) {
+    document.addEventListener('keypress',(e)=>{
         let key = e.key;
         let websit = hash[key];
         if (websit === undefined || websit === null) {
@@ -131,7 +129,7 @@ function listenKeydown(hash) {
         } else {
             window.open('http://' + websit, target = '_blank');
         }
-    }
+    })
 }
 
 
