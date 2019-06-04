@@ -1,15 +1,46 @@
 //初始化 
+
+
+
+
+
+
+
+
 var obj = init();
 var keys = obj.keys;
 var hash = obj.hash;
 
+
+let audio = $('audio');
+audio.autoplay = true;
 
 //生成键盘
 setkeys(keys, hash);
 
 
 //监听键盘按压事件
-listenKeydown(hash)
+var judge = true;
+$('input[type=text]').on('focusin', (e) => {
+    judge = false;
+    listenKeydown(hash,judge)
+})
+
+// $('input[type=text]').on('focusout', (e) => {
+
+// })
+
+
+    
+
+
+    
+
+
+
+
+
+
 
 
 
@@ -72,6 +103,9 @@ function init() {
     var hash = {
         q: 'qq.com',
         w: 'weibo.com',
+        b: 'baidu.com',
+        d: 'douyu.com',
+        g: 'www.github.com',
     }
     //调取localStorge中的值去替换hash中的数据；
     var hashLocalStorge = getFn('ooo')
@@ -117,20 +151,20 @@ function setkeys(keys, hash) {
             getButton(row[index2], kbd1)
         }
     }
-    return
-}
-
-function listenKeydown(hash) {
-    document.addEventListener('keypress',(e)=>{
-        let key = e.key;
-        let websit = hash[key];
-        if (websit === undefined || websit === null) {
-            alert('您还没编辑网站，请编辑你想要的网站');
-        } else {
-            window.open('http://' + websit, target = '_blank');
-        }
-    })
 }
 
 
+function listenKeydown(hash,judge) {
+    if (judge){
+        document.addEventListener('keypress', (e) => {
+            let key = e.key;
+            let websit = hash[key];
+            if (websit === undefined || websit === null) {
+                alert('您还没编辑网站，请编辑你想要的网站');
+            } else {
+                window.open('http://' + websit, target = '_blank');
+            }
+        })
+    }  
+}
 
