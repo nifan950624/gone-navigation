@@ -117,11 +117,10 @@ function setkeys(keys, hash) {
             getButton(row[index2], kbd1)
         }
     }
-    return
 }
 
 function listenKeydown(hash) {
-    document.addEventListener('keypress',(e)=>{
+    document.addEventListener('keypress', (e) => {
         let key = e.key;
         let websit = hash[key];
         if (websit === undefined || websit === null) {
