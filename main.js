@@ -20,27 +20,7 @@ setkeys(keys, hash);
 
 
 //监听键盘按压事件
-var judge = true;
-$('input[type=text]').on('focusin', (e) => {
-    judge = false;
-    listenKeydown(hash,judge)
-})
-
-// $('input[type=text]').on('focusout', (e) => {
-
-// })
-
-
-    
-
-
-    
-
-
-
-
-
-
+listenKeydown(hash)
 
 
 
@@ -151,35 +131,31 @@ function setkeys(keys, hash) {
             getButton(row[index2], kbd1)
         }
     }
-<<<<<<< HEAD
 }
 
 function listenKeydown(hash) {
     document.addEventListener('keypress', (e) => {
         let key = e.key;
         let websit = hash[key];
-        if (websit === undefined || websit === null) {
+        if (!websit) {
             alert('您还没编辑网站，请编辑你想要的网站');
         } else {
             window.open('http://' + websit, target = '_blank');
         }
     })
-=======
->>>>>>> bdad5ca5bd1a5c7463f1dec41059fe95212e7b37
+
 }
 
 
-function listenKeydown(hash,judge) {
-    if (judge){
-        document.addEventListener('keypress', (e) => {
-            let key = e.key;
-            let websit = hash[key];
-            if (websit === undefined || websit === null) {
-                alert('您还没编辑网站，请编辑你想要的网站');
-            } else {
-                window.open('http://' + websit, target = '_blank');
-            }
-        })
-    }  
+function listenKeydown(hash) {
+    document.addEventListener('keypress', (e) => {
+        let key = e.key;
+        let websit = hash[key];
+        if (!websit) {
+            alert('您还没编辑网站，请编辑你想要的网站');
+        } else {
+            window.open('http://' + websit, target = '_blank');
+        }
+    })
 }
 
