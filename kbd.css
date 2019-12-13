@@ -17,6 +17,21 @@ main {
     align-items: center;
 }
 
+.search .search-input {
+    padding: 0 8px;
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 8px;
+    outline: none;
+}
+
+.search .submit {
+    width: 70px;
+    text-align: center;
+    font-size: 16px;
+}
+
 #main1 kbd {
     position: relative;
     text-transform: uppercase;
@@ -84,15 +99,16 @@ main {
     left: 4px;
 }
 
-header{
+header {
     position: relative;
 }
 
-.search{
+.search {
     position: absolute;
     right: 100px;
     top: 100px;
 }
-.search.form:nth-child(1){
+
+.search.form:nth-child(1) {
     outline: none;
 }
