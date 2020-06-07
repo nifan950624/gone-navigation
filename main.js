@@ -1,26 +1,48 @@
-//初始化
-var obj = init();
-var keys = obj.keys;
-var hash = obj.hash;
-var isinput = false;
+var obj = init(),
+    keys = obj.keys,
+    hash = obj.hash,
+    isinput = false
 
 //生成键盘
 setkeys(keys, hash);
 
-
 //监听键盘按压事件
 listenKeydown(hash)
 
-$('.search').find('input[type=text]').on('focus', (e) => {
-  isinput = true
-})
+//阻断input 键盘冲突
+blockInputing()
 
-$('.search').find('input[type=text]').on('blur', (e) => {
-  isinput = false
-})
+function init() {
+  var keys = {
+    0: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    1: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+    2: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
+    length: 3
+  }
 
-//功能函数
-function getFn(name) {
+  var hash = {
+    q: 'qq.com',
+    t: 'taobao.com',
+    w: 'weibo.com',
+    b: 'baidu.com',
+    j: 'jingdong.com',
+    h: 'hao123.com',
+    d: 'douyu.com',
+    g: 'www.github.com',
+  }
+
+  var localStorageData = getKeysName('keysName')
+
+  if (localStorageData) {
+    hash = localStorageData;
+  }
+  return {
+    keys: keys,
+    hash: hash
+  }
+}
+
+function getKeysName(name) {
   return JSON.parse(localStorage.getItem(name) || 'null');
 }
 
@@ -45,55 +67,34 @@ function getImg(domain, kbd1) {
   } else {
     img1.src = './img/hua.png';
   }
+
   img1.onerror = function (img) {
-    img.target.src = './img/hua.png'; //如果img没有获取到ico则将地址指向 hua.png
+    img.target.src = './img/hua.png';
   }
 }
 
-function getButton(id, kbd1) {
+
+function getEditButton(id, kbd1) {
   let button1 = getTag('button');
+
   kbd1.appendChild(button1);
   button1.textContent = 'edit';
-  button1.id = id; //给按钮添加id名称
-  button1.onclick = function (e) { //监听鼠标点击事件
-    let button2 = e.target;
-    let img2 = button2.previousSibling; //拿到一个元素的兄弟
-    let key = button2.id;
-    let web = prompt('请输入你想要的网站');
+  button1.id = id;
+  button1.onclick = function (e) {
+    let button2 = e.target,
+        img2 = button2.previousSibling,
+        key = button2.id,
+        web = prompt('请输入你想到达的网站，例如：google.com')
+
     hash[key] = web
     img2.src = 'http://' + web + '/favicon.ico'
-    localStorage.setItem('ooo', JSON.stringify(hash)); //将用户编辑的网站存到localStorgez中；
+    localStorage.setItem('keysName', JSON.stringify(hash));
   }
   return button1;
 }
 
-function init() {
-  var keys = {
-    0: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-    1: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-    2: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
-    length: 3
-  }
-  var hash = {
-    q: 'qq.com',
-    w: 'weibo.com',
-    b: 'baidu.com',
-    d: 'douyu.com',
-    g: 'www.github.com',
-  }
-  //调取localStorge中的值去替换hash中的数据；
-  var hashLocalStorge = getFn('ooo')
-  if (hashLocalStorge) {
-    hash = hashLocalStorge;
-  }
-  return {
-    keys: keys,
-    hash: hash
-  }
-}
 
 function setkeys(keys, hash) {
-  //添加div标签
   for (var index = 0; index < keys['length']; index++) {
 
     let div1 = getTag('div');
@@ -102,27 +103,15 @@ function setkeys(keys, hash) {
 
     let row = keys[index];
 
-    // //生成kbd标签
     for (var index2 = 0; index2 < row['length']; index2++) {
       var kbd1 = getTag('kbd');
       div1.appendChild(kbd1);
-      kbd1.className = 'keyb'; //给kbd标签添加class名字
+      kbd1.className = 'keyb';
       kbd1.id = row[index2];
 
-      kbd1.onclick = function (aaa) {
-        let id = aaa.target.id;
-        console.log(id)
-        var web = hash[id];
-      }
-
-      //生成span标签
       getSpan(row[index2], kbd1)
-
-      //生成img标签，判断img是否能被加载出来
       getImg(hash[row[index2]], kbd1)
-
-      //生成编辑按钮
-      getButton(row[index2], kbd1)
+      getEditButton(row[index2], kbd1)
     }
   }
 }
@@ -130,14 +119,29 @@ function setkeys(keys, hash) {
 
 function listenKeydown(hash) {
   document.addEventListener('keypress', (e) => {
-    if (isinput) return
+    if (isinput) return;
     let key = e.key
     let websit = hash[key]
     if (!websit) {
       alert('您还没编辑网站，请编辑你想要的网站')
     } else {
-      window.open('http://' + websit, target = '_blank')
+      window.open('http://' + websit, '_blank')
     }
   })
 }
 
+function blockInputing() {
+  var search = document.getElementsByClassName('search-input')
+
+  for (let i = 0; i < search.length; i++) {
+    var searchItem = search[i]
+
+    searchItem.onfocus = function () {
+      isinput = true
+    }
+
+    searchItem.onblur = function () {
+      isinput = false
+    }
+  }
+}

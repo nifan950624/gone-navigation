@@ -1,114 +1,118 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: gray url(./img/wall.jpg) no-repeat center center;
-    /* 图片没加载出来颜色显示为灰色，链接 不要重复  x方向居中 y方向居中*/
-    background-size: cover;
+  background: gray url(./img/wall.jpg) no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
 }
 
 main {
-    height: 100vh;
-    /* 屏幕的可视的高度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.search .search-input {
-    padding: 0 8px;
-    line-height: 24px;
-    font-size: 14px;
-    font-weight: 400;
-    border-radius: 8px;
-    outline: none;
-}
-
-.search .submit {
-    width: 70px;
-    text-align: center;
-    font-size: 16px;
-}
-
-#main1 kbd {
-    position: relative;
-    text-transform: uppercase;
-}
-
-#main1 {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-}
-
-#main1 kbd button {
-    position: absolute;
-    right: 3px;
-    bottom: 1px;
-    padding: 3px 5px;
-    display: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    color: rgb(188, 188, 188);
-    outline: none;
-}
-
-#main1 kbd:hover button {
-    display: inline-block;
-}
-
-.keyb {
-    width: 80px;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(37, 37, 37, 1) 0%, rgba(24, 24, 24, 1) 100%);
-    color: rgb(188, 188, 188);
-    border-radius: 6px;
-    box-shadow: 0 0 0 1px rgb(44, 44, 44), 0 0 0 2px #1f2020, 0 3px 0 3px rgb(0, 0, 1);
-    margin: 0 13px;
-    display: inline-flex;
-    cursor: pointer;
-}
-
-.row {
-    margin: 25px;
-}
-
-#main1 .row:nth-child(2) {
-    margin-right: 55px;
-}
-
-#main1 .row:nth-child(3) {
-    margin-right: 170px;
-}
-
-.keyb .ico {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    bottom: 3px;
-    left: 4px;
-}
-
-.text {
-    position: absolute;
-    font-family: Arial, Helvetica, sans-serif;
-    top: 4px;
-    left: 4px;
+  height: 100vh;
 }
 
 header {
-    position: relative;
+  display: block;
+  overflow: hidden;
 }
 
 .search {
-    position: absolute;
-    right: 100px;
-    top: 100px;
+  float: right;
+  padding: 30px;
+  margin-top: 60px;
 }
 
 .search.form:nth-child(1) {
-    outline: none;
+  outline: none;
 }
+
+.search .search-input {
+  padding: 0 8px;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 8px;
+  outline: none;
+}
+
+.search .submit {
+  width: 70px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#main1 {
+  margin: 0 auto;
+  margin-top: 60px;
+  width: 1110px;
+  padding: 15px 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+#main1 kbd {
+  position: relative;
+  text-transform: uppercase;
+}
+
+
+#main1 kbd button {
+  position: absolute;
+  right: 3px;
+  bottom: 1px;
+  padding: 3px 5px;
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: rgb(188, 188, 188);
+  outline: none;
+}
+
+#main1 kbd:hover button {
+  display: inline-block;
+}
+
+.keyb {
+  width: 80px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(37, 37, 37, 1) 0%, rgba(24, 24, 24, 1) 100%);
+  color: rgb(188, 188, 188);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgb(44, 44, 44), 0 0 0 2px #1f2020, 0 3px 0 3px rgb(0, 0, 1);
+  margin: 0 13px;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.row {
+  margin: 25px;
+}
+
+#main1 .row:nth-child(2) {
+  margin-right: 55px;
+}
+
+#main1 .row:nth-child(3) {
+  margin-right: 170px;
+}
+
+.keyb .ico {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  bottom: 3px;
+  left: 4px;
+}
+
+.text {
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 4px;
+  left: 4px;
+}
+
+
