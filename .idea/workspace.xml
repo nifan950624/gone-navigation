@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b0b66931-1b18-4ba9-87f6-d05714ddf1ee" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery-3.4.1.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/kbd.css" beforeDir="false" afterPath="$PROJECT_DIR$/kbd.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +53,8 @@
       <option name="presentableId" value="Default" />
       <updated>1576203728228</updated>
       <workItem from="1576203731252" duration="4181000" />
-      <workItem from="1591537988488" duration="3385000" />
+      <workItem from="1591537988488" duration="3426000" />
+      <workItem from="1591541756696" duration="316000" />
     </task>
     <servers />
   </component>

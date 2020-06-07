@@ -6,11 +6,17 @@
 body {
   background: gray url(./img/wall.jpg) no-repeat center center;
   background-size: cover;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
 main {
-  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  height: 70vh;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 header {
@@ -44,13 +50,12 @@ header {
 }
 
 #main1 {
-  margin: 0 auto;
-  margin-top: 60px;
   width: 1110px;
+  margin: 0 auto;
   padding: 15px 0;
-  text-align: center;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+  text-align: center;
 }
 
 #main1 kbd {
